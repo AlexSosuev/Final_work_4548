@@ -1,6 +1,6 @@
-package controllers;
+package Controllers;
 
-import services.CounterService;
+import Services.CounterService;
 
 public class CounterController {
     private final CounterService counter;

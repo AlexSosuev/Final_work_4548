@@ -1,9 +1,9 @@
-package controllers;
+package Controllers;
 
 import java.util.List;
 
 import models.Horse;
-import services.AnimalService;
+import Services.AnimalService;
 
 public class HorseController implements AnimalController<Horse>{
     private final AnimalService<Horse> horseService;

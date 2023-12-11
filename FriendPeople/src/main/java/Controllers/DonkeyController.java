@@ -1,9 +1,9 @@
-package controllers;
+package Controllers;
 
 import java.util.List;
 
 import models.Donkey;
-import services.AnimalService;
+import Services.AnimalService;
 
 public class DonkeyController implements AnimalController<Donkey>{
     private final AnimalService<Donkey> donkeyService;

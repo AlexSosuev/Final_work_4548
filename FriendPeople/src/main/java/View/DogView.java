@@ -1,8 +1,8 @@
-package view;
+package View;
 
 import java.util.List;
 
-import controllers.AnimalController;
+import Controllers.AnimalController;
 import models.Dog;
 
 public class DogView implements AnimalView{

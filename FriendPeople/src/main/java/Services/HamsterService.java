@@ -1,9 +1,9 @@
-package services;
+package Services;
 
 import java.util.List;
 
 import models.Hamster;
-import repositories.AnimalsRepository;
+import Repositories.AnimalsRepository;
 
 public class HamsterService implements AnimalService<Hamster>{
     private final AnimalsRepository<Hamster> humsterRepository;

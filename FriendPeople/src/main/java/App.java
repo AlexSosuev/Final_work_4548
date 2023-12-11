@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import controllers.*;
-import repositories.*;
-import services.*;
-import view.*;
+import Controllers.*;
+import Repositories.*;
+import Services.*;
+import View.*;
 
 
 public class App {

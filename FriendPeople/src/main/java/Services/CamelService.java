@@ -1,9 +1,9 @@
-package services;
+package Services;
 
 import java.util.List;
 
 import models.Camel;
-import repositories.AnimalsRepository;
+import Repositories.AnimalsRepository;
 
 public class CamelService implements AnimalService<Camel>{
     private final AnimalsRepository<Camel> camelRepository;

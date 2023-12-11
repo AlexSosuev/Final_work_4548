@@ -1,9 +1,9 @@
-package controllers;
+package Controllers;
 
 import java.util.List;
 
 import models.Cat;
-import services.AnimalService;
+import Services.AnimalService;
 
 public class CatController implements AnimalController<Cat>{
     private final AnimalService<Cat> catService;

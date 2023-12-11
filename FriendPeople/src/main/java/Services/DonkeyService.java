@@ -1,9 +1,9 @@
-package services;
+package Services;
 
 import java.util.List;
 
 import models.Donkey;
-import repositories.AnimalsRepository;
+import Repositories.AnimalsRepository;
 
 public class DonkeyService implements AnimalService<Donkey>{
     private final AnimalsRepository<Donkey> donkeyRepository;

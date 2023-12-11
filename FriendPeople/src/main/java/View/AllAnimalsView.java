@@ -1,6 +1,6 @@
-package view;
+package View;
 
-import controllers.AllAnimalController;
+import Controllers.AllAnimalController;
 
 public class AllAnimalsView {
     private final AllAnimalController animalController;

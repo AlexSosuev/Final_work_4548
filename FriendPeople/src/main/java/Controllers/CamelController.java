@@ -1,9 +1,9 @@
-package controllers;
+package Controllers;
 
 import java.util.List;
 
 import models.Camel;
-import services.AnimalService;
+import Services.AnimalService;
 
 public class CamelController implements AnimalController<Camel>{
     private final AnimalService<Camel> camelService;

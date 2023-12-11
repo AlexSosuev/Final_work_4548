@@ -1,10 +1,10 @@
-package services;
+package Services;
 
 import java.util.List;
 
 import models.Cat;
-import repositories.AnimalsRepository;
-import repositories.CatRepository;
+import Repositories.AnimalsRepository;
+import Repositories.CatRepository;
 
 public class CatService implements AnimalService<Cat>{
     private final AnimalsRepository<Cat> catRepository;

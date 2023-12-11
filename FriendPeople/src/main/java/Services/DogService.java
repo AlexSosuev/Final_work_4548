@@ -1,9 +1,9 @@
-package services;
+package Services;
 
 import java.util.List;
 
 import models.Dog;
-import repositories.AnimalsRepository;
+import Repositories.AnimalsRepository;
 public class DogService implements AnimalService<Dog>{
     private final AnimalsRepository<Dog> dogRepository;
     public DogService(AnimalsRepository<Dog> dogRepository) {

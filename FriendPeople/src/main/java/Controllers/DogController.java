@@ -1,9 +1,9 @@
-package controllers;
+package Controllers;
 
 import java.util.List;
 
 import models.Dog;
-import services.AnimalService;
+import Services.AnimalService;
 
 public class DogController implements AnimalController<Dog>{
     private final AnimalService<Dog> dogService;

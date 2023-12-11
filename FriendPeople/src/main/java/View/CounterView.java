@@ -1,6 +1,6 @@
-package view;
+package View;
 
-import controllers.CounterController;
+import Controllers.CounterController;
 
 public class CounterView {
     private final CounterController controller;

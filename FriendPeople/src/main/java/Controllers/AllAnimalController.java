@@ -1,9 +1,9 @@
-package controllers;
+package Controllers;
 
 import java.util.List;
 
 import models.Animal;
-import services.AllAnimalsService;
+import Services.AllAnimalsService;
 
 public class AllAnimalController {
     private final AllAnimalsService allAnimalsService;
