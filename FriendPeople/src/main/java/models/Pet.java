@@ -11,6 +11,7 @@ public abstract class Pet extends Animal {
         super(id,name,birthday,breed);
         this.commands = commands;
     }
+
     @Override
     public String toString() {
         return String.format("%d, %s, %s, %s, %s", getId(),getName(),getBirthday(),getBreed(), commands);

@@ -19,7 +19,6 @@ public class PackAnimal extends Animal{
         this.workPerformed = workPerformed;
     }
 
-
     @Override
     public String toString() {
         return String.format("%d, %s, %s, %s, %s, Перевозимый вес: %d", getId(), getName(), getBirthday(),workPerformed,transportedWeight);

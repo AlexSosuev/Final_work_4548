@@ -1,19 +1,10 @@
 package View;
 
-import java.util.List;
-
 import Controllers.AnimalController;
 import models.Cat;
 
-public class CatView implements AnimalView{
-    private final AnimalController<Cat> controller;
+public class CatView extends AnimalView<Cat> {
     public CatView(AnimalController<Cat> controller) {
-        this.controller = controller;
+        super(controller);
     }
-
-    @Override
-    public void create(int id, String name, String birthday, String breed,List<String> commandList) {
-        controller.create(id, name, birthday, breed,commandList);
-    }
-    
 }
