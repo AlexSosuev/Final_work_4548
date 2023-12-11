@@ -1,25 +1,10 @@
 package Controllers;
 
-import java.util.List;
-
 import models.Hamster;
 import Services.AnimalService;
 
-public class HamsterController implements AnimalController<Hamster>{
-    private final AnimalService<Hamster> hamsterService;
-
+public class HamsterController extends AnimalController<Hamster>{
     public HamsterController(AnimalService<Hamster> hamsterService) {
-        this.hamsterService = hamsterService;
+        super(hamsterService);
     }
-
-    @Override
-    public List<Hamster> getAll() {
-        return hamsterService.getAll();
-    }
-
-    @Override
-    public void create(int id, String name, String birthday, String breed,List<String> commandList) {
-        hamsterService.create(id, name, birthday, breed,commandList);
-    }
-    
 }

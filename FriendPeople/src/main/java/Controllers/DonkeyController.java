@@ -1,25 +1,10 @@
 package Controllers;
 
-import java.util.List;
-
 import models.Donkey;
 import Services.AnimalService;
 
-public class DonkeyController implements AnimalController<Donkey>{
-    private final AnimalService<Donkey> donkeyService;
-
+public class DonkeyController extends AnimalController<Donkey> {
     public DonkeyController(AnimalService<Donkey> donkeyService) {
-        this.donkeyService = donkeyService;
+        super(donkeyService);
     }
-
-    @Override
-    public List<Donkey> getAll() {
-        return donkeyService.getAll();
-    }
-
-    @Override
-    public void create(int id, String name, String birthday, String breed,List<String> commandList) {
-        donkeyService.create(id, name, birthday, breed,commandList);
-    }
-    
 }
