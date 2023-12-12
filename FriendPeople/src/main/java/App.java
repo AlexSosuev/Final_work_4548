@@ -40,129 +40,129 @@ public class App {
     private static CounterService counterService;
     private static CounterController counterController;
     private static CounterView counterView = getCounterView();
-    public static void run(){
+    private static final String WARNING = "Введен не существующий пункт!";
+    private static final String WARNING_INFO = "Введите целое число!";
+
+    public static void run() {
         boolean flag = true;
-        while(flag){
-            System.out.print("\033[H\033[J");
-            String[] menu = new String[]{"Показать список животных","Добавить новое животное","Показать список команд/выполняемых работ животного","Научить животное новым командам","Узнать количество животных","Закрыть приложение"};
-            for (int i = 0; i < menu.length; i++) {
-                int item = i + 1;
-                System.out.printf("%d. %s%n", item,menu[i]);
-            }
+        while (flag) {
+            System.out.println("""
+                    Список команд:
+                    1 - Показать список животных
+                    2 - Добавить новое животное
+                    3 - Показать список команд/выполняемых работ животного
+                    4 - Научить животное новым командам
+                    5 - Узнать количество животных
+                    6 - Закрыть приложение
+                    """);
+
             switch (scan.nextLine()) {
-                case "1" -> {
-                    allAnimalsView.printAllAnimals();
-                    System.out.println("Нажмите Enter");
-                    scan.nextLine();
-                }
+                case "1" -> allAnimalsView.printAllAnimals();
                 case "2" -> {
-                    System.out.print("\033[H\033[J");
                     counterView.add();
                     createAnimal();
                 }
                 case "3" -> {
-                    System.out.print("\033[H\033[J");
                     System.out.println("Введите ID животного, список действий которого хотите увидеть: ");
                     try {
                         int id = Integer.parseInt(scan.nextLine());
-                        System.out.print("\033[H\033[J");
                         allAnimalsView.printCommands(id);
-                        System.out.println("Нажмите Enter");
-                        scan.nextLine();
                     } catch (Exception e) {
-                        System.out.println("Введите целое число!");
+                        System.out.println(WARNING_INFO);
                     }
                 }
                 case "4" -> {
                     try {
-                        System.out.print("\033[H\033[J");
                         System.out.println("Введите ID животного");
                         int id = Integer.parseInt(scan.nextLine());
                         String commandString = scan.nextLine();
                         allAnimalsView.createNewCommand(id, commandString);
                     } catch (Exception e) {
-                        System.out.println("Введите целое число!");
+                        System.out.println(WARNING_INFO);
                     }
-                    System.out.println("Нажмите Enter");
-                    scan.nextLine();
                 }
-                case "5" -> {
-                    counterView.printCount();
-                    System.out.println("Нажмите Enter");
-                    scan.nextLine();
-                }
+                case "5" -> counterView.printCount();
                 case "6" -> {
-                    System.out.print("\033[H\033[J");
                     try {
-                        System.out.print("Закрытие приложения");
-                        for (int i = 0; i < 5; i++) {
+                        System.out.print("Закрываем приложение: ");
+                        for (int i = 0; i < 3; i++) {
                             Thread.sleep(500);
-                            System.out.print(".");
+                            System.out.print(" bye ");
                         }
-                        System.out.print("\033[H\033[J");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     flag = false;
                 }
-                default -> System.out.println("Введите правильный пункт!");
+                default -> System.out.println(WARNING);
             }
         }
     }
-    private static DogView getDogView(){
+
+    private static DogView getDogView() {
         dogRepository = new DogRepository();
         dogService = new DogService(dogRepository);
         dogController = new DogController(dogService);
         return new DogView(dogController);
     }
-    private static CatView getCatView(){
+
+    private static CatView getCatView() {
         catRepository = new CatRepository();
         catService = new CatService(catRepository);
         catController = new CatController(catService);
         return new CatView(catController);
     }
-    private static HamsterView getHamsterView(){
+
+    private static HamsterView getHamsterView() {
         hamsterRepository = new HamsterRepository();
         hamsterService = new HamsterService(hamsterRepository);
         hamsterController = new HamsterController(hamsterService);
         return new HamsterView(hamsterController);
     }
-    private static HorseView getHorseView(){
+
+    private static HorseView getHorseView() {
         horseRepository = new HorseRepository();
         horseService = new HorseService(horseRepository);
         horseController = new HorseController(horseService);
         return new HorseView(horseController);
     }
-    private static DonkeyView getDonkeyView(){
+
+    private static DonkeyView getDonkeyView() {
         donkeyRepository = new DonkeyRepository();
         donkeyService = new DonkeyService(donkeyRepository);
         donkeyController = new DonkeyController(donkeyService);
         return new DonkeyView(donkeyController);
     }
-    private static CamelView getCamelView(){
+
+    private static CamelView getCamelView() {
         camelRepository = new CamelRepository();
         camelService = new CamelService(camelRepository);
         camelController = new CamelController(camelService);
         return new CamelView(camelController);
     }
-    private static AllAnimalsView getAllAnimalsView(){
-        AllAnimalsService allAnimalsService = new AllAnimalsService(dogService, catService,hamsterService,horseService,donkeyService,camelService);
+
+    private static AllAnimalsView getAllAnimalsView() {
+        AllAnimalsService allAnimalsService = new AllAnimalsService(dogService, catService, hamsterService, horseService, donkeyService, camelService);
         AllAnimalController animalController = new AllAnimalController(allAnimalsService);
         return new AllAnimalsView(animalController);
-
     }
-    private static CounterView getCounterView(){
+
+    private static CounterView getCounterView() {
         counterService = new CounterService();
         counterController = new CounterController(counterService);
         return new CounterView(counterController);
     }
 
-    private static void createAnimal(){
-        String[] typeAnimal = {"Собака","Кошка","Хомяк","Лошадь","Осёл","Верблюд"};
-        for (int i = 0; i < typeAnimal.length; i++) {
-            int item = i+1;
-            System.out.printf("%d. %s%n",item,typeAnimal[i]);
-            }
+    private static void createAnimal() {
+        System.out.println("""
+                Выберите вид животного:
+                1 - Собака
+                2 - Кошка
+                3 - Хомяк
+                4 - Лошадь
+                5 - Осёл
+                6 - Верблюд
+                """);
         switch (scan.nextLine()) {
             case "1" -> choice(dogView);
             case "2" -> choice(catView);
@@ -170,26 +170,20 @@ public class App {
             case "4" -> choice(horseView);
             case "5" -> choice(donkeyView);
             case "6" -> choice(camelView);
-            default -> {
-                System.out.println("Введите правильный пункт");
-                System.out.println("Нажмите Enter");
-                scan.nextLine();
-            }
+            default -> System.out.println(WARNING);
         }
     }
-    private static void choice(AnimalView animalView){
-                    System.out.print("\033[H\033[J");
-                    System.out.println("Введите имя, дату рождения(дд.мм.гггг) и породу через запятую");
-                    String[] animal = scan.nextLine().split(",");
-                    System.out.println("Введите команды через запятую(если их нет, напишите \"НЕТ\")");
-                    List<String> commands = new ArrayList<>(Arrays.asList(scan.nextLine().split(",")));
-                    try{
-                        animalView.create(allAnimalsView.getMaxId()+1,animal[0], animal[1], animal[2],commands);
-                    } catch(Exception e){
-                        System.out.println("Введите все пункты правильно!");
-                        System.out.println("Нажмите Enter");
-                        scan.nextLine();
-                    }
-                    
+
+    private static void choice(AnimalView animalView) {
+        System.out.println("Введите имя, дату рождения(дд.мм.гггг) и породу животного через запятую");
+        String[] animal = scan.nextLine().split(",");
+        System.out.println("Введите команды через запятую (если их нет, напишите \"НЕТ\")");
+        List<String> commands = new ArrayList<>(Arrays.asList(scan.nextLine().split(",")));
+        try {
+            animalView.create(allAnimalsView.getMaxId() + 1, animal[0], animal[1], animal[2], commands);
+            System.out.println("Животное добавлено!\n");
+        } catch (Exception e) {
+            System.out.println("Не верно введенные данные!");
+        }
     }
 }
